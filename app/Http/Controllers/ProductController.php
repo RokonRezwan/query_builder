@@ -22,7 +22,10 @@ class ProductController extends Controller
 
     public function create()
     {
-        $data['categories'] = DB::table('categories')->get();
+        $data['categories'] = DB::table('categories')
+                                  ->where('is_active', '=', 1)
+                                  ->get();
+
         return view('products.create', $data);
     }
 
@@ -53,15 +56,15 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        
-        $categories = DB::table('categories')->get();
+        $categories = DB::table('categories')
+                            ->where('is_active', '=', 1)
+                            ->get();
+
         return view('products.edit', compact(['product','categories']));
     }
 
     public function update(Request $request, Product $product)
     {
-        //return $request;
-        //return $product;
         //validate the input
         $request->validate([
             'name' => 'required',
@@ -70,12 +73,13 @@ class ProductController extends Controller
         ]);
 
         //update product
-
-        $users = DB::table('products')->where('id', '=',$product->id)->update([
-            'name' => $request->name,
-            'category_id' => $request->category_id,
-            'is_active' => $request->is_active,
-        ]);
+        $users = DB::table('products')
+                        ->where('id', '=',$product->id)
+                        ->update([
+                            'name' => $request->name,
+                            'category_id' => $request->category_id,
+                            'is_active' => $request->is_active,
+                        ]);
 
         //redirect the user and send friendly message
         return redirect()->route('products.index')->with('success','Product updated successfully');
@@ -83,9 +87,7 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
-        return $product;
         //delete the product
-
         $deleted = DB::table('products')->where('id', '=',$product->id)->delete();
 
         //redirect the user with a success message
@@ -96,18 +98,21 @@ class ProductController extends Controller
     {
         if ($product->is_active == 1) 
          {
-            $users = DB::table('products')->where('id', '=',$product->id)->update([
-                'is_active' => 0,
-            ]);            
+            $users = DB::table('products')
+                            ->where('id', '=',$product->id)
+                            ->update([
+                                'is_active' => 0,
+                            ]);            
          }
         else 
          {
-            $users = DB::table('products')->where('id', '=',$product->id)->update([
-                'is_active' => 1,
-            ]);
+            $users = DB::table('products')
+                            ->where('id', '=',$product->id)
+                            ->update([
+                                'is_active' => 1,
+                            ]);
          }
 
          return redirect()->back()->with('success','Product Status changed successfully');
-        
     }
 }

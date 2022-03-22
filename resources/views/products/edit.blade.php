@@ -5,15 +5,16 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-                  <div class="p-2 text-end">
-                        <a href="{{ route('products.index') }}" class="btn btn-primary">Back</a>
-                  </div>
-                    
-                <div class="card">
-                    <div class="card-header fw-bold">{{ __('Edit Product') }}</div>
+                <div class="card-header fw-bold">
 
-                    
-                      <div class="card-body">
+                    <h2>{{ __('Edit Product details') }}</h2>
+
+                    <div class="p-2 text-end">
+                        <a href="{{ route('products.index') }}" class="btn btn-primary">Back</a>
+                    </div>                    
+                </div>
+
+                    <div class="card-body">
                         <form method="POST" action="{{ route('products.update', $product->id) }}">
                             @csrf
                             @method('PUT')

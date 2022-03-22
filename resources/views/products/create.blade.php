@@ -5,14 +5,15 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-                  <div class="p-2 text-end">
-                        <a href="{{ route('products.index') }}" class="btn btn-primary">Back</a>
-                  </div>
-                    
-                <div class="card">
-                    <div class="card-header fw-bold">{{ __('Add New Product') }}</div>
+                <div class="card-header fw-bold">
 
-                    
+                    <h2>{{ __('Create a New Product') }}</h2>
+
+                    <div class="p-2 text-end">
+                        <a href="{{ route('products.index') }}" class="btn btn-primary">Back</a>
+                    </div>                    
+                </div>
+
                     <div class="card-body">
                         <form method="POST" action="{{ route('products.store') }}">
                             @csrf

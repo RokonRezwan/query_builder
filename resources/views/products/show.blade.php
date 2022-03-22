@@ -4,13 +4,16 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-
-                  <div class="p-2 text-end">
-                        <a href="{{ route('products.index') }}" class="btn btn-primary">Back</a>
-                  </div>
                     
                 <div class="card">
-                    <div class="card-header fw-bold">{{ __('Product details') }}</div>
+                    <div class="card-header fw-bold">
+
+                        <h2>{{ __('Product details') }}</h2>
+
+                        <div class="p-2 text-end">
+                            <a href="{{ route('products.index') }}" class="btn btn-primary">Back</a>
+                        </div>                    
+                    </div>
                     
                     <div class="card-body">
                             <div class="mb-3 row">

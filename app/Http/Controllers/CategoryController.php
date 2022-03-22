@@ -17,36 +17,6 @@ class CategoryController extends Controller
         return view('categories.index', $data);
     }
 
-    public function create()
-    {
-        return view('categories.create');
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show(Category $category)
-    {
-        //
-    }
-
-    public function edit(Category $category)
-    {
-        //
-    }
-
-    public function update(Request $request, Category $category)
-    {
-        //
-    }
-
-    public function destroy(Category $category)
-    {
-        //
-    }
-
     public function status(Category $category)
     {
         
@@ -64,6 +34,5 @@ class CategoryController extends Controller
          }
 
          return redirect()->back()->with('success','Product Status changed successfully');
-        
     }
 }
