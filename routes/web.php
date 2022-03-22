@@ -23,7 +23,7 @@ Route::resource('products',ProductController::class);
 Route::put('products.status/{product}', [ProductController::class, 'status'])->name('products.status');
 
 
-Route::resource('categories',CategoryController::class);
+Route::resource('categories',CategoryController::class)->only(['index']);
 Route::put('categories.status/{category}', [CategoryController::class, 'status'])->name('categories.status');
 
 
